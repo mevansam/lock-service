@@ -1,0 +1,68 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url 'https://repo.spring.io/release' }
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://repo.spring.io/release" }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven-publish'
+apply plugin: 'maven'
+
+description = 'Distributed Lock Service.'
+archivesBaseName = "appbricks-lock-service"
+
+group 'org.appbricks'
+version System.env.APPBRICKS_DISTRIBUTED_LOCK_VERSION!=null \
+    ? "${System.env.APPBRICKS_DISTRIBUTED_LOCK_VERSION}-SNAPSHOT" : '0.1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    springBootVersion = '1.3.2.RELEASE'
+    springDataJpaVersion = '1.9.4.RELEASE'
+    apacheCommonsLangVersion = '3.4'
+    apacheCommonsDbcp2Version = '2.1.1'
+    hibernateJpaSupportVersion = '5.1.0.Final'
+    h2databaseVersion = '1.4.191'
+    mysqlConnectorVersion = '5.1.38'
+    mockitoVersion = '1.10.19'
+    assertJVersion = '3.3.0'
+}
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+    // Spring
+    compile("org.springframework.data:spring-data-jpa:${springDataJpaVersion}")
+
+    // Apache
+    compile("org.apache.commons:commons-lang3:${apacheCommonsLangVersion}")
+    runtime("org.apache.commons:commons-dbcp2:${apacheCommonsDbcp2Version}")
+
+    // Persistence
+    compile("org.hibernate:hibernate-entitymanager:${hibernateJpaSupportVersion}")
+    runtime("com.h2database:h2:${h2databaseVersion}")
+    runtime("mysql:mysql-connector-java:${mysqlConnectorVersion}")
+
+    // Json Assertion framework
+    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    testCompile("org.mockito:mockito-core:${mockitoVersion}")
+    testCompile("org.assertj:assertj-core:${assertJVersion}")
+}
+    
+task wrapper(type: Wrapper) {
+    gradleVersion = "2.2.1"
+}

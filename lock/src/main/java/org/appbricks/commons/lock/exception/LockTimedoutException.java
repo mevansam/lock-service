@@ -1,4 +1,4 @@
-package org.appbricks.commons.exception;
+package org.appbricks.commons.lock.exception;
 
 /**
  * Exception thrown when waiting for a lock times out.

@@ -1,12 +1,12 @@
-package org.appbricks.commons.service;
+package org.appbricks.commons.lock.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.appbricks.commons.data.DistributedLockRepository;
-import org.appbricks.commons.exception.InvalidLockException;
-import org.appbricks.commons.exception.LockException;
-import org.appbricks.commons.exception.MaintenanceEnabledException;
-import org.appbricks.commons.model.DistributedLock;
+import org.appbricks.commons.lock.data.DistributedLockRepository;
+import org.appbricks.commons.lock.exception.InvalidLockException;
+import org.appbricks.commons.lock.exception.LockException;
+import org.appbricks.commons.lock.exception.MaintenanceEnabledException;
+import org.appbricks.commons.lock.model.DistributedLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -29,7 +29,7 @@ public class DistributedLockService {
     private DistributedLockRepository distributedLockRepository;
 
     @Autowired
-    private EntityManager jpaEntityManager;
+    private EntityManager entityManager;
 
     @Autowired
     public DistributedLockService(DistributedLockRepository distributedLockRepository) {
@@ -65,7 +65,7 @@ public class DistributedLockService {
                 throw new MaintenanceEnabledException("Lock '%s' is in maintenance mode so it cannot be locked.", name);
             }
 
-            this.jpaEntityManager.refresh(distributedLock, LockModeType.PESSIMISTIC_WRITE);
+            this.entityManager.refresh(distributedLock, LockModeType.PESSIMISTIC_WRITE);
             if (distributedLock.isLocked()) {
                 log.debug(
                     String.format("Unable to acquire lock as it is locked by another process or thread: %s",

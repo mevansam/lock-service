@@ -1,6 +1,4 @@
-package org.appbricks.commons.exception;
-
-import org.appbricks.commons.model.DistributedLock;
+package org.appbricks.commons.lock.exception;
 
 /**
  * Exception thrown if lock is not valid (i.e. owned by current process and thread)

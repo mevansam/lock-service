@@ -1,6 +1,6 @@
-package org.appbricks.commons.data;
+package org.appbricks.commons.lock.data;
 
-import org.appbricks.commons.model.DistributedLock;
+import org.appbricks.commons.lock.model.DistributedLock;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.repository.CrudRepository;
 

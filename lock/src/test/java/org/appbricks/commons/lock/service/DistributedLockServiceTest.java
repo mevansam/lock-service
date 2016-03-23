@@ -1,16 +1,13 @@
-package org.cloudfoundry.community.servicebroker.mongodb.service;
+package org.appbricks.commons.lock.service;
 
-import static org.junit.Assert.fail;
-
-import org.cloudfoundry.community.servicebroker.mongodb.config.Application;
-import org.cloudfoundry.community.servicebroker.mongodb.data.DistributedLockRepository;
-import org.cloudfoundry.community.servicebroker.mongodb.exception.InvalidLockException;
-import org.cloudfoundry.community.servicebroker.mongodb.exception.LockTimedoutException;
+import org.appbricks.commons.lock.LockTestContext;
+import org.appbricks.commons.lock.data.DistributedLockRepository;
+import org.appbricks.commons.lock.exception.InvalidLockException;
+import org.appbricks.commons.lock.exception.LockTimedoutException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
@@ -20,9 +17,10 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static org.junit.Assert.fail;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebIntegrationTest
+@ContextConfiguration(classes = { LockTestContext.class })
 public class DistributedLockServiceTest {
 
     @Autowired
@@ -35,7 +33,8 @@ public class DistributedLockServiceTest {
     public void testConcurrentLocking()
         throws Throwable {
 
-        DistributedLockInstance testLock = new DistributedLockInstance("testLock1", this.distributedLockService, 500, 3);
+        DistributedLockInstance testLock = new DistributedLockInstance(
+            "testLock1", this.distributedLockService, 500, 3);
         ReentrantLock exclusivityCheck = new ReentrantLock();
 
         ThreadPoolExecutor threadPool =

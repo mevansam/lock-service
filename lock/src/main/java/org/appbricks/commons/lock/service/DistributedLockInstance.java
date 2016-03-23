@@ -1,12 +1,12 @@
-package org.appbricks.commons.service;
+package org.appbricks.commons.lock.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.appbricks.commons.exception.LockException;
-import org.appbricks.commons.exception.LockTimedoutException;
-import org.appbricks.commons.exception.LockUpdateException;
-import org.appbricks.commons.exception.MaintenanceEnabledException;
-import org.appbricks.commons.model.DistributedLock;
+import org.appbricks.commons.lock.exception.LockException;
+import org.appbricks.commons.lock.exception.LockTimedoutException;
+import org.appbricks.commons.lock.exception.LockUpdateException;
+import org.appbricks.commons.lock.exception.MaintenanceEnabledException;
+import org.appbricks.commons.lock.model.DistributedLock;
 
 import java.net.InetAddress;
 

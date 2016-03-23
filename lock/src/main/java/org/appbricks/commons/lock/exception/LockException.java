@@ -1,4 +1,4 @@
-package org.appbricks.commons.exception;
+package org.appbricks.commons.lock.exception;
 
 /**
  * Lock thrown if lock acquisition times out.

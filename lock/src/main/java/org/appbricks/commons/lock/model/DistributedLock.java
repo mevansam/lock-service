@@ -1,4 +1,4 @@
-package org.appbricks.commons.model;
+package org.appbricks.commons.lock.model;
 
 import org.apache.commons.lang3.StringUtils;
 

@@ -6,7 +6,6 @@ before_install:
   -in environment.tar.enc -out environment.tar -d
 - tar xvf environment.tar -C sharedlock
 script:
-- ./gradlew assemble
 - ./gradlew test
 after_success:
 - ./gradlew uploadArchives

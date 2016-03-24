@@ -8,6 +8,7 @@ bin
 tmp
 .rest-shell.log
 spring-shell.log
+environment.tar
 gradle.properties
 secring.gpg
 /target/

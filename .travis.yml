@@ -3,6 +3,6 @@ jdk:
 - oraclejdk8
 before_install:
 - openssl aes-256-cbc -K $encrypted_e3ce7c39c37e_key -iv $encrypted_e3ce7c39c37e_iv
-  -in sharedlock/secring.gpg.enc -out sharedlock/secring.gpg -d
+  -in secring.gpg.enc -out sharedlock/secring.gpg -d
 - openssl aes-256-cbc -K $encrypted_e3ce7c39c37e_key -iv $encrypted_e3ce7c39c37e_iv
-  -in sharedlock/gradle.properties.enc -out sharedlock/gradle.properties -d
+  -in gradle.properties.enc -out sharedlock/gradle.properties -d

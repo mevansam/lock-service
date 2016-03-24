@@ -9,6 +9,7 @@ tmp
 .rest-shell.log
 spring-shell.log
 gradle.properties
+secring.gpg
 /target/
 *.iml
 .idea/

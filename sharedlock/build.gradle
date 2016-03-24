@@ -18,8 +18,8 @@ apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-description = 'Distributed Lock Service.'
-archivesBaseName = "appbricks-sharedlock-service"
+description = 'Lock that can be shared by distributed heterogenous applications.'
+archivesBaseName = "sharedlock"
 
 group 'org.appbricks'
 version '0.1.0-SNAPSHOT'

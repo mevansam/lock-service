@@ -5,3 +5,8 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_e3ce7c39c37e_key -iv $encrypted_e3ce7c39c37e_iv
   -in environment.tar.enc -out environment.tar -d
 - tar xvf environment.tar -C sharedlock
+script:
+- ./gradlew assemble
+- ./gradlew test
+after_success:
+- ./gradlew uploadArchives

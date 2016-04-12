@@ -22,7 +22,7 @@ description = 'Lock that can be shared by distributed heterogenous applications.
 archivesBaseName = "sharedlock"
 
 group 'org.appbricks'
-version '0.1.0-SNAPSHOT'
+version '1.0.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
